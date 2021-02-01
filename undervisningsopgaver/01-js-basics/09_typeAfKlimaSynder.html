@@ -10,23 +10,23 @@
 
 <body>
     <script>
-        let timer = 1;
-        let co2 = 109;
+        let timer = 3;
+        let co2 = 327;
         let co2UdledtKgVedFlyrejse = timer * co2;
         let resultat;
 
         if (co2UdledtKgVedFlyrejse < 100) {
-            resultat = "Tæt på Thunberg";
+            resultat = `Du har fløjet ${timer} og udledt ${co2}.Tæt på Thunberg`;
 
         } else if (co2UdledtKgVedFlyrejse < 200) {
 
-            resultat = "Jaja, du behøver ikke at melde dig ud af Å!";
+            resultat = `Du har fløjet ${timer} og udledt ${co2}. Jaja, du behøver ikke at melde dig ud af Å!`;
 
         } else if (co2UdledtKgVedFlyrejse < 600) {
-            resultat = "Det er godt for turismen i Nordeuropa";
+            resultat = `Du har fløjet ${timer} og udledt ${co2}. Det er godt for turismen i Nordeuropa`;
 
         } else {
-            resultat = "Når ja, vi kan jo altid kolonisere en anden planet";
+            resultat = `Du har fløjet ${timer} og udledt ${co2}. Når ja, vi kan jo altid kolonisere en anden planet`;
         }
 
 
