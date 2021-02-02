@@ -1,0 +1,13 @@
+h2 {
+    text-align: center;
+}
+
+.section {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(408px, 1fr));
+    grid-gap: 20px;
+    margin: auto;
+
+
+
+}
