@@ -2,12 +2,46 @@ h2 {
     text-align: center;
 }
 
-.section {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(408px, 1fr));
-    grid-gap: 20px;
+h3 {
+    max-width: 78%;
     margin: auto;
 
+}
 
+main {
+
+    justify-content: center;
+    align-items: center;
+    margin: auto;
+
+}
+
+
+section {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+
+
+
+
+}
+
+
+h4,
+p {
+    max-width: 400px;
+    margin: auto;
+}
+
+img {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: auto;
+
+}
+
+footer {
+    text-align: center;
 
 }
