@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="da">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <header>
+        Titel
+    </header>
+    <main>
+        <h2 class="undertitel">Undertitel</h2>
+
+        <section>
+            <article>
+
+                <img src="https://placeimg.com/400/300/arch" alt="byen">
+                <h4 class="a1">Artikel 1</h4>
+                <p>At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga. Et harum quidem rerum facilis est et expedita distinctio. </p>
+            </article>
+
+            <article>
+
+                <img src="https://placeimg.com/400/300/nature" alt="Natur" class="billede2">
+                <h4 class="a2">Artikel 2</h4>
+                <p>At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga. Et harum quidem rerum facilis est et expedita distinctio.</p>
+            </article>
+
+
+        </section>
+    </main>
+    <footer>
+        Dette er en footer
+    </footer>
+
+
+    <script>
+        //lytter til om DOM'en er loadet på siden
+        document.addEventListener("DOMContentLoaded", start);
+
+        function start() {
+            console.log("dom er loaded");
+        }
+
+        const titel = document.querySelector("header");
+        console.log("titel");
+
+        titel.innerHTML = "<h1>Byen vs. Naturen</h1>";
+
+        const undertitel = document.querySelector(".undertitel");
+        console.log("undertitel")
+
+        undertitel.innerHTML = "Hvad kan man opleve hvor?";
+
+        const artikelEt = document.querySelector(".a1");
+        console.log("Artikel 1");
+
+        artikelEt.textContent = "Byen";
+
+
+        const artikelTo = document.querySelector(".a2");
+        console.log("Artikel 2");
+
+        artikelTo.textContent = "Naturen";
+
+        const billede1 = document.querySelector("article:first-child img");
+        console.log("billede 1");
+
+        billede1.alt = "Billede af byen";
+        /*Ændre img med JavaScript:billede1.src = "https://placeimg.com/400/300/nature";*/
+
+        const billede2 = document.querySelector(".billede2");
+        console.log("billede 2");
+
+        billede2.alt = "Billede af naturen";
+        /*Ændre img med JavaScript:
+        billede2.src = "https://placeimg.com/400/300/arch"*/
+
+
+
+        const footer = document.querySelector("footer");
+        console.log("footer");
+
+        footer.textContent = "Hyg dig i både byen og i naturen";
+
+        //Fremgangsmåde for at tilføje ny artikel:
+        let mainSection = document.querySelector("section");
+        // Nyt artivle elemenent
+        let newArticle = document.createElement("article");
+        //ny h4 element
+        let overskrift = document.createElement("h4");
+        //tekst til overskriften
+        let overskriftText = document.createTextNode("Article 3");
+        //indsæt tekst i oversrift
+        overskrift.appendChild(overskriftText);
+        //tilføj overskrift til article
+        newArticle.appendChild(overskrift);
+        //tilføj article til section
+        mainSection.appendChild(newArticle);
+
+    </script>
+
+</body>
+
+</html>
