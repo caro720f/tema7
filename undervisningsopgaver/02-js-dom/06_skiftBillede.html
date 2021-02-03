@@ -39,6 +39,13 @@
 
 
     <script>
+        //lytter til om DOM'en er loadet på siden
+        document.addEventListener("DOMContentLoaded", start);
+
+        function start() {
+            console.log("dom er loaded");
+        }
+
         const titel = document.querySelector("header");
         console.log("titel");
 
@@ -82,9 +89,9 @@
 
         //Fremgangsmåde for at tilføje ny artikel:
         let mainSection = document.querySelector("section");
-        // Nyt article elemenent
+        // Nyt artivle elemenent
         let newArticle = document.createElement("article");
-        //nyt h4 element
+        //ny h4 element
         let overskrift = document.createElement("h4");
         //tekst til overskriften
         let overskriftText = document.createTextNode("Article 3");
@@ -94,6 +101,17 @@
         newArticle.appendChild(overskrift);
         //tilføj article til section
         mainSection.appendChild(newArticle);
+
+        //Billede 1 skal skifte, når man klikker på det
+
+        billede1.addEventListener("click", skiftBillede);
+
+        function skiftBillede() {
+            const nummer = Math.round(Math.random() * 4);
+            console.log("Skift billede");
+            billede1.src = "https://placeimg.com/400/300/nature" + nummer;
+
+        }
 
     </script>
 
