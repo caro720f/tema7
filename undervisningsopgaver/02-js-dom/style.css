@@ -1,8 +1,9 @@
-h2 {
+header,
+footer {
     text-align: center;
 }
 
-h3 {
+h2 {
     max-width: 78%;
     margin: auto;
 
@@ -39,9 +40,5 @@ img {
     align-items: center;
     margin: auto;
 
-}
-
-footer {
-    text-align: center;
 
 }
