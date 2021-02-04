@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="da">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+    <link rel="stylesheet" href="">
+</head>
+
+<body>
+
+
+    <section id="liste"></section>
+
+    <script>
+        /*let object = {
+            "Dyr": "Gris",
+            "Art": "Pattedyr",
+            "Levested": "Svinefarm",
+            "Billede": "http://mabe-kea.dk/E19/pics/pig.png"
+        }
+        console.log(`Dyr:${object.Dyr}, Art:${object.Art}, Levested: ${object.Levested}`);
+
+        const destination = document.querySelector("#dyr");
+
+        destination.querySelector("h3").textContent = object.Dyr;
+        destination.querySelector("img").src = object.Billede;
+        destination.querySelector("p").textContent += object.Art;
+        destination.querySelector(".levested").textContent += object.Levested;
+
+       const navn = `${object.Dyr}`;
+        destination.querySelector("h3").textContent = navn;
+        destination.querySelector("img").src = object.Billede;*/
+
+        //Dyr i Array:
+        document.addEventListener("DOMContentLoaded", start);
+
+        let dyr = [{
+                "navn": "frø",
+                "type": "amfibie",
+                "levested": "sø",
+
+            },
+            {
+                "navn": "gris",
+                "type": "pattedyr",
+                "levested": "svinefarm",
+
+            },
+            {
+                "navn": "ræv",
+                "type": "pattedyr",
+                "levested": "skoven",
+
+            },
+            {
+                "navn": "sild",
+                "type": "fisk",
+                "levested": "havet",
+
+            },
+            {
+                "navn": "krokodille",
+                "type": "krybdyr",
+                "levested": "floden",
+
+            }
+
+        ];
+
+
+
+        function start() {
+            console.log("siden er loadet");
+            const listevisning = document.querySelector("#liste");
+            dyr.forEach(dyreart => {
+                //Placer dyr i html
+                listevisning.innerHTML += `<p>${dyreart.navn}, ${dyreart.type} fra: ${dyreart.levested}</p>`
+            })
+        }
+
+    </script>
+</body>
+
+</html>
