@@ -7,63 +7,67 @@
     <title></title>
     <link rel="stylesheet" href="">
 </head>
+<style>
+    article {
+
+        border: 1px solid black;
+        padding: 10px;
+
+</style>
 
 <body>
 
 
-    <section id="liste"></section>
+    <section class="dataContainer"></section>
+    <template>
+        <article class="dyreliste">
+            <h3></h3>
+            <img>
+            <p class="type"></p>
+            <p class="levested"></p>
+        </article>
+    </template>
+
+
+
 
     <script>
-        /*let object = {
-            "Dyr": "Gris",
-            "Art": "Pattedyr",
-            "Levested": "Svinefarm",
-            "Billede": "http://mabe-kea.dk/E19/pics/pig.png"
-        }
-        console.log(`Dyr:${object.Dyr}, Art:${object.Art}, Levested: ${object.Levested}`);
-
-        const destination = document.querySelector("#dyr");
-
-        destination.querySelector("h3").textContent = object.Dyr;
-        destination.querySelector("img").src = object.Billede;
-        destination.querySelector("p").textContent += object.Art;
-        destination.querySelector(".levested").textContent += object.Levested;
-
-       const navn = `${object.Dyr}`;
-        destination.querySelector("h3").textContent = navn;
-        destination.querySelector("img").src = object.Billede;*/
-
         //Dyr i Array:
-        document.addEventListener("DOMContentLoaded", start);
+        document.addEventListener("DOMContentLoaded", visDyrearter);
 
         let dyr = [{
                 "navn": "frø",
                 "type": "amfibie",
                 "levested": "sø",
+                "billede": "http://mabe-kea.dk/E19/pics/frog.png",
 
             },
             {
                 "navn": "gris",
                 "type": "pattedyr",
                 "levested": "svinefarm",
+                "billede": "http://mabe-kea.dk/E19/pics/pig.png",
 
             },
             {
                 "navn": "ræv",
                 "type": "pattedyr",
                 "levested": "skoven",
+                "billede": "http://mabe-kea.dk/E19/pics/fox.png",
 
             },
             {
                 "navn": "sild",
                 "type": "fisk",
                 "levested": "havet",
+                "billede": "http://mabe-kea.dk/E19/pics/sild.jpg",
 
             },
             {
                 "navn": "krokodille",
                 "type": "krybdyr",
                 "levested": "floden",
+                "billede": "http://mabe-kea.dk/E19/pics/kroko.jpg"
 
             }
 
@@ -71,12 +75,18 @@
 
 
 
-        function start() {
+        function visDyrearter() {
             console.log("siden er loadet");
-            const listevisning = document.querySelector("#liste");
-            dyr.forEach(dyreart => {
-                //Placer dyr i html
-                listevisning.innerHTML += `<p>${dyreart.navn}, ${dyreart.type} fra: ${dyreart.levested}</p>`
+            const container = document.querySelector(".dataContainer");
+            const dyrTemplate = document.querySelector("template");
+            dyr.forEach(dyr => {
+                //placer dyr i html
+                let klon = dyrTemplate.cloneNode(true).content;
+                klon.querySelector("h3").textContent = dyr.navn;
+                klon.querySelector(".type").textContent = dyr.type;
+                klon.querySelector(".levested").textContent = dyr.levested;
+                klon.querySelector("img").src = dyr.billede;
+                container.appendChild(klon);
             })
         }
 
