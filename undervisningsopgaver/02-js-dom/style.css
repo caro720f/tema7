@@ -1,15 +1,18 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
 header,
 footer {
     text-align: center;
 }
 
-h2 {
-    max-width: 78%;
-    margin: auto;
 
-}
+
 
 main {
+
 
     justify-content: center;
     align-items: center;
@@ -21,6 +24,7 @@ main {
 section {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+    grid-gap: 20px;
 
 
 
@@ -39,6 +43,7 @@ img {
     justify-content: center;
     align-items: center;
     margin: auto;
+
 
 
 }

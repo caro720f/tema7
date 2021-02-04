@@ -93,6 +93,11 @@
         let newArticle = document.createElement("article");
         //tilføj shadow
         newArticle.classList.add("shadow");
+
+        //tilføj billede i artikel
+        let billede3 = document.createElement("img");
+        billede3.src = "https://placeimg.com/400/300/arch";
+        newArticle.appendChild(billede3);
         //ny h4 element
         let overskrift = document.createElement("h4");
         //tekst til overskriften
@@ -103,10 +108,10 @@
         newArticle.appendChild(overskrift);
         //tilføj article til section
         mainSection.appendChild(newArticle);
-        //tilføj billede i artikel
-        let billede3 = document.createElement("img");
-        billede3.src = "https://placeimg.com/400/300/arch";
-        newArticle.appendChild(billede3);
+
+        let newParagraph = document.querySelector("p");
+        let paragraphText = document.createTextNode("Her står der også noget");
+        newArticle.appendChild(paragraphText);
 
         //Billede 1 skal skifte, når man klikker på det
 
