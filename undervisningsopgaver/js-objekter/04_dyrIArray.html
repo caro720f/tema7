@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="da">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+    <link rel="stylesheet" href="">
+</head>
+
+<body>
+
+
+    <section id="liste"></section>
+
+    <script>
+        /*let object = {
+            "Dyr": "Gris",
+            "Art": "Pattedyr",
+            "Levested": "Svinefarm",
+            "Billede": "http://mabe-kea.dk/E19/pics/pig.png"
+        }
+        console.log(`Dyr:${object.Dyr}, Art:${object.Art}, Levested: ${object.Levested}`);
+
+        const destination = document.querySelector("#dyr");
+
+        destination.querySelector("h3").textContent = object.Dyr;
+        destination.querySelector("img").src = object.Billede;
+        destination.querySelector("p").textContent += object.Art;
+        destination.querySelector(".levested").textContent += object.Levested;
+
+       const navn = `${object.Dyr}`;
+        destination.querySelector("h3").textContent = navn;
+        destination.querySelector("img").src = object.Billede;*/
+
+        //Dyr i Array:
+        document.addEventListener("DOMContentLoaded", start);
+
+        let dyr = [{
+                "navn": "frø",
+                "type": "amfibie",
+                "levested": "sø",
+                "billede": "http://mabe-kea.dk/E19/pics/frog.png"
+            },
+            {
+                "navn": "gris",
+                "type": "pattedyr",
+                "levested": "svinefarm",
+                "billede": "http://mabe-kea.dk/E19/pics/pig.png"
+            },
+            {
+                "navn": "ræv",
+                "type": "pattedyr",
+                "levested": "skoven",
+                "billede": "http://mabe-kea.dk/E19/pics/fox.png"
+            },
+            {
+                "navn": "sild",
+                "type": "fisk",
+                "levested": "havet",
+                "billede": "http://mabe-kea.dk/E19/pics/sild.jpg"
+            },
+            {
+                "navn": "krokodille",
+                "type": "krybdyr",
+                "levested": "Afrika",
+                "billede": "http://mabe-kea.dk/E19/pics/kroko.jpg"
+            }
+
+        ];
+
+
+
+        function start() {
+            console.log(dyr);
+            const listevisning = document.querySelector("#liste");
+            dyr.forEach(dyr => {
+                //Placer dyr i html
+                listevisning.innerHTML += `<p>${dyr.navn} ${dyr.type} ${dyr.levested}${dyr.billede}</p>`
+            })
+        }
+
+    </script>
+</body>
+
+</html>
