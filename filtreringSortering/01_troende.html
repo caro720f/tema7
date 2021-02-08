@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Persongalleri</title>
+    <link rel="stylesheet" href="">
+</head>
+
+<style>
+    main {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+
+
+    }
+
+    article {
+        border: 2px solid #a1dee3;
+        border-radius: 25px;
+        padding: 10px;
+        margin: 1rem;
+        text-align: center
+    }
+
+    img {
+        max-width: 100px;
+        align-items: center;
+    }
+</style>
+
+
+<body>
+
+    <main id="liste"></main>
+    <template>
+        <article>
+            <img src="" alt="" class="billede">
+            <h2 class="fornavn"></h2>
+            <p class="efternavn"></p>
+            <p class="fødselsdag"></p>
+        </article>
+    </template>
+
+
+
+
+
+    <script>
+        const header = document.querySelector("header h1");
+        const url = "https://persongalleri-5d3e.restdb.io/rest/persongalleri";
+        const medieurl = "https://persongalleri-5d3e.restdb.io/media/";
+        const myHeaders = {
+
+            'x-apikey': "600fe9211346a1524ff12e31"
+        }
+
+
+        document.addEventListener("DOMContentLoaded", start)
+        let personer;
+        let filter = "ja";
+        //første funktion der kaldes efter DOM er loaded
+        function start() {
+            loadJSON();
+        }
+
+
+
+        async function loadJSON() {
+            const JSONData = await fetch("https://persongalleri-5d3e.restdb.io/rest/persongalleri", {
+                headers: myHeaders
+            });
+            personer = await JSONData.json();
+            console.log("Personer", personer);
+            visPersoner();
+
+        }
+
+        //funktion der viser personer i liste view
+        function visPersoner() {
+
+            //container til articles med en person
+            const main = document.querySelector("#liste");
+            //select indhold af html af html skabelon (article)
+            const template = document.querySelector("template").content;
+
+            personer.forEach(person => {
+
+                //loop igennem json (personer)
+                if (filter == person.troende) {
+                    const klon = template.cloneNode(true);
+                    klon.querySelector(".billede").src = medieurl + person.billede;
+                    klon.querySelector(".fornavn").textContent = person.fornavn;
+                    main.appendChild(klon);
+                }
+
+
+            })
+        }
+
+
+
+
+
+        /*
+                function vis(json) {
+                    console.log(json);
+                    json.forEach(person => {
+                        const klon = template.cloneNode(true);
+                        klon.querySelector(".billede").src = medieurl + person.billede;
+                        klon.querySelector(".fornavn").textContent = person.fornavn;
+                        klon.querySelector(".efternavn").textContent = person.efternavn;
+                        klon.querySelector(".fødselsdag").textContent = person.fødselsdag;
+                        main.appendChild(klon);
+                    })
+                }
+
+                hentData();*/
+    </script>
+</body></html>
