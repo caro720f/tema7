@@ -6,6 +6,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Babushka</title>
     <link rel="stylesheet" href="">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Stalinist+One&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Hammersmith+One&display=swap" rel="stylesheet">
 </head>
 
 <style>
@@ -19,8 +23,37 @@
     nav {
         flex: auto;
         text-align: center;
+        font-family: 'Hammersmith One', sans-serif;
+
+    }
+
+    button {
+        border: none;
+    }
 
 
+    body {
+        margin: 5%;
+    }
+
+    h1 {
+        margin: 1%;
+        font-family: 'Stalinist One', cursive;
+
+    }
+
+    h2 {
+        font-family: 'Stalinist One', cursive;
+        font-size: medium;
+    }
+
+    h3 {
+        font-family: 'Hammersmith One', sans-serif;
+
+    }
+
+    p {
+        font-family: 'Hammersmith One', sans-serif;
     }
 
     .valgt {
@@ -36,7 +69,7 @@
     }
 
     img {
-        max-width: 100px;
+        max-width: 100%;
         align-items: center;
     }
 
@@ -47,12 +80,24 @@
     <header>
         <h1>Alle Retter</h1>
         <nav>
-            <button data-kategori="alle" class="valgt">Alle retter</button>
-            <button data-kategori="forretter">Forretter</button>
-            <button data-kategori="hovedretter">Hovedretter</button>
-            <button data-kategori="desserter">Desserter</button>
-            <button data-kategori="sideorders">Sideorders</button>
-            <button data-kategori="drikkevarer">Drikkevarer</button>
+            <button data-kategori="alle" class="valgt">
+                <h3>Alle retter</h3>
+            </button>
+            <button data-kategori="forretter">
+                <h3>Forretter</h3>
+            </button>
+            <button data-kategori="hovedretter">
+                <h3>Hovedretter</h3>
+            </button>
+            <button data-kategori="desserter">
+                <h3>Desserter</h3>
+            </button>
+            <button data-kategori="sideorders">
+                <h3>Sideorders</h3>
+            </button>
+            <button data-kategori="drikkevarer">
+                <h3>Drikkevarer</h3>
+            </button>
         </nav>
     </header>
     <main id="liste"></main>
@@ -70,7 +115,7 @@
     <script>
         const header = document.querySelector("header h1");
         const url = "https://babushka-dd8a.restdb.io/rest/menu";
-        const medieurl = "https://babushka-dd8a.restdb.io/media";
+        const medieurl = "https://babushka-dd8a.restdb.io/media/";
         const myHeaders = {
 
             'x-apikey': "600ec2fb1346a1524ff12de4"
