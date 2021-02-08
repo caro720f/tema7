@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Babushka</title>
+    <link rel="stylesheet" href="">
+</head>
+
+<style>
+    main {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+
+
+    }
+
+    nav {
+        flex: auto;
+        text-align: center;
+
+
+    }
+
+    .valgt {
+        background-color: #a1dee3;
+
+    }
+
+    article {
+        border: 2px solid #a1dee3;
+        padding: 10px;
+        margin: 1rem;
+        text-align: center
+    }
+
+    img {
+        max-width: 100px;
+        align-items: center;
+    }
+
+</style>
+
+
+<body>
+    <header>
+        <h1>Alle Retter</h1>
+        <nav>
+            <button data-kategori="alle" class="valgt">Alle retter</button>
+            <button data-kategori="forretter">Forretter</button>
+            <button data-kategori="hovedretter">Hovedretter</button>
+            <button data-kategori="desserter">Desserter</button>
+            <button data-kategori="sideorders">Sideorders</button>
+            <button data-kategori="drikkevarer">Drikkevarer</button>
+        </nav>
+    </header>
+    <main id="liste"></main>
+    <template>
+        <article>
+            <img src="" alt="" class="billede">
+            <h2 class="navn"></h2>
+            <p class="kortbeskrivelse"></p>
+            <p class="pris"></p>
+        </article>
+    </template>
+
+
+
+    <script>
+        const header = document.querySelector("header h1");
+        const url = "https://babushka-dd8a.restdb.io/rest/menu";
+        const medieurl = "https://babushka-dd8a.restdb.io/media";
+        const myHeaders = {
+
+            'x-apikey': "600ec2fb1346a1524ff12de4"
+        }
+
+
+        document.addEventListener("DOMContentLoaded", start)
+        let menu;
+        let filter = "forretter";
+        //første funktion der kaldes efter DOM er loaded
+        function start() {
+            const filterKnapper = document.querySelectorAll("nav button");
+            filterKnapper.forEach(knap => knap.addEventListener("click", filtrerMenu));
+            loadJSON();
+        }
+
+        //evtentlistener knyttet til knapper > vælger hvilket filter som er aktivt
+        function filtrerMenu() {
+            //sæt variabel "filter" til værdien af data-troende på den knap som der er klikket på
+            filter = this.dataset.kategori;
+            //fjern klassen valgt fra den knap
+            document.querySelector(".valgt").classList.remove("valgt");
+            //marker den knap der er klikket på
+            this.classList.add("valgt");
+            //kald funktionen visMenu efter det nye filter er sat
+            visMenu();
+            header.textContent = this.textContent;
+        }
+
+
+
+
+        async function loadJSON() {
+            const JSONData = await fetch("https://babushka-dd8a.restdb.io/rest/menu", {
+                headers: myHeaders
+
+            });
+            menu = await JSONData.json();
+            console.log("Menu", menu);
+            visMenu();
+
+        }
+
+        //funktion der viser personer i liste view
+        function visMenu() {
+
+
+            //container til articles med en person
+            const main = document.querySelector("#liste");
+            //select indhold af html af html skabelon (article)
+            const template = document.querySelector("template").content;
+            main.textContent = ""; //ryd container inden ny container
+            menu.forEach(ret => {
+                console.log("menu", ret.kategori);
+                //loop igennem json (retter)
+                if (filter == ret.kategori || filter == "alle") {
+                    const klon = template.cloneNode(true);
+                    klon.querySelector(".billede").src = medieurl + ret.billede;
+                    klon.querySelector(".navn").textContent = ret.navn;
+                    klon.querySelector(".kortbeskrivelse").textContent = ret.kortbeskrivelse;
+                    klon.querySelector(".pris").textContent = ret.pris + ",-";
+                    main.appendChild(klon);
+                }
+
+
+            })
+
+        }
+
+    </script>
+</body>
+
+</html>
