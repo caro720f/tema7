@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Babushka</title>
+    <link rel="stylesheet" href="">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Stalinist+One&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Hammersmith+One&display=swap" rel="stylesheet">
+</head>
+
+<style>
+    main {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+
+
+    }
+
+    nav {
+        flex: auto;
+        text-align: center;
+        font-family: 'Hammersmith One', sans-serif;
+
+    }
+
+    button {
+        border: none;
+    }
+
+
+    body {
+        margin: 5%;
+
+    }
+
+
+    h1 {
+        margin: 1%;
+        font-family: 'Stalinist One', cursive;
+
+    }
+
+    h2 {
+        font-family: 'Stalinist One', cursive;
+        font-size: medium;
+    }
+
+    h3 {
+        font-family: 'Hammersmith One', sans-serif;
+
+    }
+
+    p {
+        font-family: 'Hammersmith One', sans-serif;
+    }
+
+    .valgt {
+        background-color: #a1dee3;
+
+    }
+
+    article {
+        padding: 10px;
+        margin: 1rem;
+        text-align: center;
+        background-color: rgba(189, 183, 107, 0.19);
+    }
+
+    main {
+        margin-top: 10px;
+        background-color: rgba(189, 183, 107, 0.19);
+
+    }
+
+    img {
+        max-width: 100%;
+        align-items: center;
+    }
+
+</style>
+
+
+<body>
+    <header>
+        <h1>Alle Retter</h1>
+        <nav>
+            <button data-kategori="alle" class="valgt">
+                <h3>Alle retter</h3>
+            </button>
+            <button data-kategori="forretter">
+                <h3>Forretter</h3>
+            </button>
+            <button data-kategori="hovedretter">
+                <h3>Hovedretter</h3>
+            </button>
+            <button data-kategori="desserter">
+                <h3>Desserter</h3>
+            </button>
+            <button data-kategori="sideorders">
+                <h3>Sideorders</h3>
+            </button>
+            <button data-kategori="drikkevarer">
+                <h3>Drikkevarer</h3>
+            </button>
+        </nav>
+    </header>
+    <main id="liste"></main>
+
+    <article>
+        <img src="" alt="" class="billede">
+        <h2 class="navn"></h2>
+        <strong>
+            <p class="kortbeskrivelse"></p>
+        </strong>
+        <p class="langbeskrivelse"></p>
+        <p class="pris"></p>
+
+        <button class="tilbage">Tilbage til Menu</button>
+    </article>
+
+
+
+
+
+    <script>
+        const urlParams = new URLSearchParams(window.location.search);
+        const id = urlParams.get("id");
+
+        const medieurl = "https://babushka-dd8a.restdb.io/media/";
+        let ret;
+        const myHeaders = {
+
+            "x-apikey": "600ec2fb1346a1524ff12de4"
+        }
+
+        console.log("ID", id);
+        document.addEventListener("DOMContentLoaded", loadJSON);
+
+        async function loadJSON() {
+            const JSONData = await fetch(`https://babushka-dd8a.restdb.io/rest/menu/${id}`, {
+                headers: myHeaders
+            });
+            ret = await JSONData.json();
+
+            console.log("Retter", ret);
+            visRet(ret);
+
+        }
+
+
+        function visRet() {
+            console.log("vis ret")
+            document.querySelector(".navn").textContent = ret.navn;
+            document.querySelector(".billede").src = medieurl + ret.billede;
+            document.querySelector(".kortbeskrivelse").textContent = ret.kortbeskrivelse;
+            document.querySelector(".langbeskrivelse").textContent = ret.langbeskrivelse;
+            document.querySelector(".pris").textContent = ret.pris + ",-";
+            document.querySelector(".tilbage").addEventListener("click", tilbageTilMenu);
+        }
+
+        function tilbageTilMenu() {
+            history.back();
+        }
+
+    </script>
+</body>
+
+</html>
