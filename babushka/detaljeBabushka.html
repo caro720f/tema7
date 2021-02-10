@@ -29,11 +29,61 @@
 
     button {
         border: none;
+        padding: 0.3em 1.2em;
+        margin: 0 0.3em 0.3em 0;
+        border-radius: 2em;
+        background-color: rgb(240, 239, 223);
+
+    }
+
+    button:hover {
+        background-color: rgba(206, 49, 49, 0.73);
+
+    }
+
+    .kurv {
+        display: inline-block;
+        padding: 0.3em 1.2em;
+        margin: 0 0.3em 0.3em 0;
+        border-radius: 2em;
+        box-sizing: border-box;
+        font-family: 'Roboto', sans-serif;
+        font-size: small;
+        font-weight: 300;
+        color: #FFFFFF;
+        background-color: rgb(150, 195, 83);
+        text-align: center;
+        transition: all 0.2s;
+    }
+
+    .kurv:hover {
+        background-color: rgba(95, 118, 60, 0.82);
+    }
+
+    .tilbage {
+        display: inline-block;
+        padding: 0.3em 1.2em;
+        margin: 0 0.3em 0.3em 0;
+        border-radius: 2em;
+        box-sizing: border-box;
+        font-family: 'Roboto', sans-serif;
+        font-size: small;
+        font-weight: 300;
+        color: #FFFFFF;
+        background-color: rgb(159, 0, 0);
+        text-align: center;
+        transition: all 0.2s;
+    }
+
+    .tilbage:hover {
+        background-color: rgba(206, 49, 49, 0.73);
     }
 
 
     body {
         margin: 5%;
+        background-image: url(eduardo-casajus-gorostiaga-SgNQjOElnh8-unsplash.jpg);
+
 
     }
 
@@ -56,29 +106,51 @@
 
     p {
         font-family: 'Hammersmith One', sans-serif;
+
     }
 
     .valgt {
-        background-color: #a1dee3;
+        background-color: rgba(206, 49, 49, 0.73);
 
     }
 
-    article {
+    .retDetaljer {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(550px, 1fr));
         padding: 10px;
         margin: 1rem;
         text-align: center;
-        background-color: rgba(189, 183, 107, 0.19);
-    }
-
-    main {
-        margin-top: 10px;
-        background-color: rgba(189, 183, 107, 0.19);
+        background-color: rgb(240, 239, 223);
+        overflow: hidden;
+        padding-top: 34px;
+        padding-bottom: 34px;
 
     }
+
+    .billedeRet {
+        width: 88%;
+
+    }
+
+
 
     img {
         max-width: 100%;
-        align-items: center;
+
+    }
+
+    .left {
+
+        float: left;
+        max-width: 100%
+    }
+
+    .right {
+
+        float: right;
+        max-width: 92%;
+        padding-top: 65px;
+
     }
 
 </style>
@@ -87,6 +159,7 @@
 <body>
     <header>
         <h1>Alle Retter</h1>
+
         <nav>
             <button data-kategori="alle" class="valgt">
                 <h3>Alle retter</h3>
@@ -110,16 +183,26 @@
     </header>
     <main id="liste"></main>
 
-    <article>
-        <img src="" alt="" class="billede">
-        <h2 class="navn"></h2>
-        <strong>
-            <p class="kortbeskrivelse"></p>
-        </strong>
-        <p class="langbeskrivelse"></p>
-        <p class="pris"></p>
+    <article class="retDetaljer">
+        <div class="left">
+            <img src="" alt="" class="billedeRet">
+        </div>
+        <div class="right">
+            <h2 class="navn"></h2>
+            <strong>
+                <p class="kortbeskrivelse"></p>
+            </strong>
+            <p class="langbeskrivelse"></p>
+            <p class="pris"></p>
 
-        <button class="tilbage">Tilbage til Menu</button>
+
+
+            <button class="kurv">Tilføj kurv</button>
+
+            <button class="tilbage">
+                Tilbage til Menu
+            </button>
+        </div>
     </article>
 
 
@@ -155,7 +238,7 @@
         function visRet() {
             console.log("vis ret")
             document.querySelector(".navn").textContent = ret.navn;
-            document.querySelector(".billede").src = medieurl + ret.billede;
+            document.querySelector(".billedeRet").src = medieurl + ret.billede;
             document.querySelector(".kortbeskrivelse").textContent = ret.kortbeskrivelse;
             document.querySelector(".langbeskrivelse").textContent = ret.langbeskrivelse;
             document.querySelector(".pris").textContent = ret.pris + ",-";
