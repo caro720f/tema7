@@ -22,7 +22,7 @@
     }
 
     nav {
-        flex: auto;
+
         text-align: center;
         font-family: 'Hammersmith One', sans-serif;
 
@@ -40,6 +40,30 @@
         background-color: rgba(206, 49, 49, 0.73);
 
     }
+
+
+
+    .kurv {
+        display: inline-block;
+        padding: 0.3em 1.2em;
+        margin: 0 0.3em 0.3em 0;
+        border-radius: 2em;
+        box-sizing: border-box;
+        font-family: 'Roboto', sans-serif;
+        font-size: small;
+        font-weight: 300;
+        color: #FFFFFF;
+        background-color: rgb(150, 195, 83);
+        text-align: center;
+        transition: all 0.2s;
+
+
+    }
+
+    .kurv:hover {
+        background-color: rgba(95, 118, 60, 0.82);
+    }
+
 
     body {
         margin: 5%;
@@ -91,12 +115,18 @@
         align-items: center;
     }
 
+    @media (max-width:680px) {
+        h1 {
+            padding-left: 50px;
+        }
+    }
+
 </style>
 
 
 <body>
     <header>
-        <h1>Alle Retter</h1>
+        <h1>Alle retter</h1>
         <nav>
             <button data-kategori="alle" class="valgt">
                 <h3>Alle retter</h3>
@@ -126,8 +156,19 @@
             <strong>
                 <p class="kortbeskrivelse"></p>
             </strong>
+
             <p class="pris"></p>
+            <button class="kurv">Tilføj kurv</button>
+
+
+
+
+
         </article>
+
+
+
+
     </template>
 
 
@@ -144,7 +185,7 @@
 
         document.addEventListener("DOMContentLoaded", start)
         let menu;
-        let filter = "forretter";
+        let filter = "alle";
         //første funktion der kaldes efter DOM er loaded
         function start() {
             const filterKnapper = document.querySelectorAll("nav button");
